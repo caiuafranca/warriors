@@ -1,4 +1,5 @@
 package br.com.omnesti.warrios;
+import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,10 +32,19 @@ public class Guerreiro {
 	
 	public void andar(int distanciaGanha){
 		this.distanciaPercorrida+= distanciaGanha;
-		System.out.println("parabens você percorreu "+ getDistanciaPercorrida()+ " m" );
+		System.out.println("parabens você percorreu "+ getDistanciaPercorrida()+ " m\n" );
 	}
 	
 	public void recuperar(){}
+	
+	public void situacao(){
+		
+		System.out.println(getNome()+ " você esta com\n"+
+									"Life: " +getLife() + 
+									"\nForça de Ataque: " + getForca()+
+									"\nExperiencia de: "+ getXp() +
+									"\nQuantidade de Itens: " + getMochila().size());
+	}	
 
 	public String getNome() {
 		return nome;

@@ -19,12 +19,15 @@ public class GameController {
 		while (g.getDistanciaPercorrida()< distanciaCastelo) {
 			contadorTempo++;
 			
-			if(contadorTempo%2 == 0){
+			if(contadorTempo%5 == 1){
 				Monstro m = new Monstro();
 				System.out.println("Apareceu um "+ m.getNome()+ " com " + m.getDistancia()+
 								   " mts de distancia,\né "+m.getLife()+" de Life" );
 				
-				System.out.println("o que deseja fazer? 1-Atacar ou 2-Fugir");
+				System.out.println("Sua Situação é:");
+				g.situacao();
+				
+				System.out.println("O que deseja fazer? 1-Atacar ou 2-Fugir");
 				int opcao = Integer.parseInt(scan.next());
 				switch (opcao) {
 					case 1:
@@ -32,10 +35,12 @@ public class GameController {
 							m.receberDano(g.atacar());
 							System.out.println("Você Atacou. sua força é "+ g.getForca()+
 										       " e deixou o Monstro com\n "+ m.getLife() +" de Life");
+							g.receberDano(m.getDano());
 						}
 						System.out.println("Parabens o " + m.getNome()+ " foi derrotado!!!");
 						g.andar(m.getDistancia());
 						g.setForca(g.getForca()+10);
+						g.setXp(g.getXp()+1);
 						break;
 
 					case 2:
